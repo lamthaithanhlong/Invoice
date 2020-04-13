@@ -17,6 +17,8 @@ import {ChartsDemo} from './components/ChartsDemo';
 import {MiscDemo} from './components/MiscDemo';
 import {EmptyPage} from './components/EmptyPage';
 import {Documentation} from "./components/Documentation";
+import {StepsDemo} from "./components/invoice/Progress";
+import {KhoiTao} from "./components/invoice/khoiTao";
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -123,7 +125,9 @@ class App extends Component {
 					{label: 'Menus', icon: 'pi pi-fw pi-plus', to: '/menus'},
 					{label: 'Messages', icon: 'pi pi-fw pi-spinner',to: '/messages'},
 					{label: 'Charts', icon: 'pi pi-fw pi-chart-bar', to: '/charts'},
-					{label: 'Misc', icon: 'pi pi-fw pi-upload', to: '/misc'}
+                    {label: 'Misc', icon: 'pi pi-fw pi-upload', to: '/misc'},
+                    {label: 'Step', icon: 'pi pi-fw pi-upload', to: '/step'},
+                    {label: 'khoitao', icon: 'pi pi-fw pi-upload', to: '/khoitao'}
                 ]
             },
             {
@@ -248,6 +252,8 @@ class App extends Component {
                     <Route path="/misc" component={MiscDemo} />
                     <Route path="/empty" component={EmptyPage} />
                     <Route path="/documentation" component={Documentation} />
+                    <Route path="/step" component={StepsDemo} />
+                    <Route path="/khoitao" component={KhoiTao} />
                 </div>
 
                 <AppFooter />
