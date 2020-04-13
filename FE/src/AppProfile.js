@@ -23,7 +23,7 @@ export class AppProfile extends Component {
                     <img src="assets/layout/images/fpt.png" alt="" />
                 </div>
                 <button className="p-link layout-profile-link" onClick={this.onClick}>
-                    <span className="username">Fpt E-invoice</span>
+                    <span className="username">Fpt E-invoice</span>Invoice
                     <i className="pi pi-fw pi-cog"/>
                 </button>
                 <ul className={classNames({'layout-profile-expanded': this.state.expanded})}>

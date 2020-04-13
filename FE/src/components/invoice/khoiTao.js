@@ -19,14 +19,7 @@ export class KhoiTao extends Component {
                     <Invoice />
                     <Invoice />
                     <Invoice />
-                    <Invoice />
-                    <Invoice />
-                    <Invoice />
-                    <Invoice />
                 </Carousel>
-                    {/* <Invoice />
-                    <Invoice />
-                    <Invoice /> */}
             </div>
         );
     }

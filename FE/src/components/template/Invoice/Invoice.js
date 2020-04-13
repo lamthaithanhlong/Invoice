@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Dialog} from 'primereact/dialog';
+import {Button} from 'primereact/button';
 import styles from './Invoice.module.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Checkbox} from 'primereact/checkbox';
@@ -22,51 +24,60 @@ class Invoice extends Component {
         quantity: 0,
         price: 0.00,
       },
-    ]
+    ],
+    isSelected : false,
   }
 
-  handleInvoiceChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
-  }
+  // handleInvoiceChange = (event) => {
+  //   this.setState({[event.target.name]: event.target.value})
+  // }
 
-  handleLineItemChange = (elementIndex) => (event) => {
-    let lineItems = this.state.lineItems.map((item, i) => {
-      if (elementIndex !== i) return item
-      return {...item, [event.target.name]: event.target.value}
-    })
-    this.setState({lineItems})
-  }
+  // handleLineItemChange = (elementIndex) => (event) => {
+  //   let lineItems = this.state.lineItems.map((item, i) => {
+  //     if (elementIndex !== i) return item
+  //     return {...item, [event.target.name]: event.target.value}
+  //   })
+  //   this.setState({lineItems})
+  // }
 
-  handleAddLineItem = (event) => {
-    this.setState({
-      // use optimistic uuid for drag drop; in a production app this could be a database id
-      lineItems: this.state.lineItems.concat(
-        [{ id: uuidv4(), name: '', description: '', quantity: 0, price: 0.00 }]
-      )
-    })
-  }
+  // handleAddLineItem = (event) => {
+  //   this.setState({
+  //     // use optimistic uuid for drag drop; in a production app this could be a database id
+  //     lineItems: this.state.lineItems.concat(
+  //       [{ id: uuidv4(), name: '', description: '', quantity: 0, price: 0.00 }]
+  //     )
+  //   })
+  // }
 
-  handleRemoveLineItem = (elementIndex) => (event) => {
-    this.setState({
-      lineItems: this.state.lineItems.filter((item, i) => {
-        return elementIndex !== i
-      })
-    })
-  }
+  // handleRemoveLineItem = (elementIndex) => (event) => {
+  //   this.setState({
+  //     lineItems: this.state.lineItems.filter((item, i) => {
+  //       return elementIndex !== i
+  //     })
+  //   })
+  // }
 
-  handleReorderLineItems = (newLineItems) => {
-    this.setState({
-      lineItems: newLineItems,
-    })
-  }
+  // handleReorderLineItems = (newLineItems) => {
+  //   this.setState({
+  //     lineItems: newLineItems,
+  //   })
+  // }
 
-  handleFocusSelect = (event) => {
-    event.target.select()
-  }
+  // handleFocusSelect = (event) => {
+  //   event.target.select()
+  // }
 
   handlePayButtonClick = () => {
-    alert('Not implemented')
+    this.setState({
+      isSelected: true
+    })
   }
+
+  onHide() {
+    this.setState({
+      isSelected: false
+    });
+}
 
   formatCurrency = (amount) => {
     return (new Intl.NumberFormat(this.locale, {
@@ -77,27 +88,27 @@ class Invoice extends Component {
     }).format(amount))
   }
 
-  calcTaxAmount = (c) => {
-    return c * (this.state.taxRate / 100)
-  }
+  // calcTaxAmount = (c) => {
+  //   return c * (this.state.taxRate / 100)
+  // }
 
-  calcLineItemsTotal = () => {
-    return this.state.lineItems.reduce((prev, cur) => (prev + (cur.quantity * cur.price)), 0)
-  }
+  // calcLineItemsTotal = () => {
+  //   return this.state.lineItems.reduce((prev, cur) => (prev + (cur.quantity * cur.price)), 0)
+  // }
 
-  calcTaxTotal = () => {
-    return this.calcLineItemsTotal() * (this.state.taxRate / 100)
-  }
+  // calcTaxTotal = () => {
+  //   return this.calcLineItemsTotal() * (this.state.taxRate / 100)
+  // }
 
-  calcGrandTotal = () => {
-    return this.calcLineItemsTotal() + this.calcTaxTotal()
-  }
+  // calcGrandTotal = () => {
+  //   return this.calcLineItemsTotal() + this.calcTaxTotal()
+  // }
 
   render = () => {
     return (
       <div className={styles.invoice}>
         <Checkbox onChange={e => this.setState({checked: e.checked})} style={{marginLeft: 690}} checked={this.state.checked}></Checkbox>
-        <div className={styles.brand}>
+        <div className={styles.brand} style={{width: 100}}>
           <img src="https://via.placeholder.com/150x50.png?text=logo" alt="Logo" className={styles.logo} />
         </div>
         <div className={styles.addresses}>
@@ -141,7 +152,7 @@ class Invoice extends Component {
             <div className={styles.valueTable}>
               <div className={styles.row}>
                 <div className={styles.label}>Tax Rate (%)</div>
-                <div className={styles.value}><input name="taxRate" type="number" step="0.01" value={this.state.taxRate} onChange={this.handleInvoiceChange} onFocus={this.handleFocusSelect} /></div>
+                {/* <div className={styles.value}><input name="taxRate" type="number" step="0.01" value={this.state.taxRate} onChange={this.handleInvoiceChange} onFocus={this.handleFocusSelect} /></div> */}
               </div>
             </div>
           </form>
@@ -149,21 +160,29 @@ class Invoice extends Component {
             <div className={styles.valueTable}>
               <div className={styles.row}>
                 <div className={styles.label}>Subtotal</div>
-                <div className={`${styles.value} ${styles.currency}`}>{this.formatCurrency(this.calcLineItemsTotal())}</div>
+                {/* <div className={`${styles.value} ${styles.currency}`}>{this.formatCurrency(this.calcLineItemsTotal())}</div> */}
               </div>
               <div className={styles.row}>
                 <div className={styles.label}>Tax ({this.state.taxRate}%)</div>
-                <div className={`${styles.value} ${styles.currency}`}>{this.formatCurrency(this.calcTaxTotal())}</div>
+                {/* <div className={`${styles.value} ${styles.currency}`}>{this.formatCurrency(this.calcTaxTotal())}</div> */}
               </div>
               <div className={styles.row}>
                 <div className={styles.label}>Total Due</div>
-                <div className={`${styles.value} ${styles.currency}`}>{this.formatCurrency(this.calcGrandTotal())}</div>
+                {/* <div className={`${styles.value} ${styles.currency}`}>{this.formatCurrency(this.calcGrandTotal())}</div> */}
               </div>
             </div>
           </form>
         </div>
         <div className={styles.pay}>
-          <button className={styles.payNow} onClick={this.handlePayButtonClick}>Select template</button>
+          {this.state.checked == true ? <button className={styles.payNow} onClick={this.handlePayButtonClick}>Select template</button> : ""}
+          {this.state.isSelected == true ?  
+          <Dialog header="Confirm" visible={this.state.isSelected} style={{width: '50vw'}} onHide={() => this.onHide('displayBasic')} >
+              You want select this template
+              <br/>
+              <br/>
+              <Button label="Yes" style={{marginRight: 20}}></Button>
+              <Button label="No"></Button>
+          </Dialog> : ""}
         </div>
       </div>
       
