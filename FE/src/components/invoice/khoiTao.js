@@ -1,5 +1,6 @@
 import Invoice from '../template/Invoice/Invoice';
-
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import React, {Component} from 'react';
 
 export class KhoiTao extends Component {
@@ -13,7 +14,19 @@ export class KhoiTao extends Component {
     render() {
         return (
             <div>
-                        <Invoice />
+                <Carousel>
+                    <Invoice />
+                    <Invoice />
+                    <Invoice />
+                    <Invoice />
+                    <Invoice />
+                    <Invoice />
+                    <Invoice />
+                    <Invoice />
+                </Carousel>
+                    {/* <Invoice />
+                    <Invoice />
+                    <Invoice /> */}
             </div>
         );
     }

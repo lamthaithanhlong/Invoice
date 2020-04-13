@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import styles from './Invoice.module.scss';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import styles from './Invoice.module.scss'
 import {Checkbox} from 'primereact/checkbox';
 
 import LineItems from './LineItems'
@@ -163,7 +162,7 @@ class Invoice extends Component {
           </form>
         </div>
         <div className={styles.pay}>
-          <button className={styles.payNow} onClick={this.handlePayButtonClick}>Select template</button>
+          <button className={styles.payNow} onClick={this.handlePayButtonClick}>Pay Now</button>
         </div>
       </div>
       
