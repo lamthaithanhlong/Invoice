@@ -19,6 +19,7 @@ import {EmptyPage} from './components/EmptyPage';
 import {Documentation} from "./components/Documentation";
 import {StepsDemo} from "./components/invoice/Progress";
 import {KhoiTao} from "./components/invoice/khoiTao";
+import login from "./components/login/src/GitHubLogin";
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -80,7 +81,7 @@ class App extends Component {
                 mobileMenuActive: !mobileMenuActive
             });
         }
-       
+        
         event.preventDefault();
     }
 
@@ -127,7 +128,8 @@ class App extends Component {
 					{label: 'Charts', icon: 'pi pi-fw pi-chart-bar', to: '/charts'},
                     {label: 'Misc', icon: 'pi pi-fw pi-upload', to: '/misc'},
                     {label: 'Step', icon: 'pi pi-fw pi-upload', to: '/step'},
-                    {label: 'khoitao', icon: 'pi pi-fw pi-upload', to: '/khoitao'}
+                    {label: 'khoitao', icon: 'pi pi-fw pi-upload', to: '/khoitao'},
+                    {label: 'login', icon: 'pi pi-fw pi-upload', to: '/login'}
                 ]
             },
             {
@@ -254,6 +256,7 @@ class App extends Component {
                     <Route path="/documentation" component={Documentation} />
                     <Route path="/step" component={StepsDemo} />
                     <Route path="/khoitao" component={KhoiTao} />
+                    <Route path="/login" component={login} />
                 </div>
 
                 <AppFooter />
